@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Social Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --text: #1f2937;
+            --bg: #f9fafb;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: rgb(178, 238, 235);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .logo-container {
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            border: 3px solid white;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .links-container {
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .link-button:hover::before {
+            transform: translateX(0);
+        }
+        
+        .link-button i {
+            margin-right: 12px;
+            font-size: 1.25rem;
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+        
+        .facebook-button {
+            background-color: #1877F2;
+        }
+        
+        .instagram-button {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .company-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .tagline {
+            font-size: 0.9375rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            max-width: 24rem;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+        
+        @media (max-width: 380px) {
+            .logo-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .link-button {
+                padding: 0.875rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="Logo DF.jpeg" class="logo-img">
+        <div class="company-name">CV.Dunia Fashion</div>
+        <div class="tagline">Menghubungkan Anda dengan layanan kami.
+            Kalimantan barat I Kab.Ketapang I Kel.Sukaharja I Kec.Deltapawan I Jl. Brigjen Katamso I No.99
+        </div>
+    </div>
+    
+    <div class="links-container">
+        <a href="https://wa.me/6281256981903" class="link-button whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            WhatsApp Admin 1
+        </a>
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/6281234567890" class="link-button whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            WhatsApp Admin 2
+        </a>
+        
+        <!-- Facebook Link -->
+        <a href="https://facebook.com/vincent" class="link-button facebook-button" target="_blank">
+            <i class="fab fa-facebook"></i>
+            Facebook Kami
+        </a>
+        
+        <!-- Instagram Link -->
+        <a href="https://instagram.com/_vic.Iz" class="link-button instagram-button" target="_blank">
+            <i class="fab fa-instagram"></i>
+            Instagram Kami
+        </a>
+    </div>
+    
+    <div class="footer">
+        © <span id="current-year"></span> CV.Dunia Fashion. All rights reserved.
+        <div class="mt-1 text-xs">Terms of Service | Privacy Policy</div>
+    </div>
+    
+    <script>
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Link animations
+            const links = document.querySelectorAll('.link-button');
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.opacity = 1;
+                    link.style.transform = 'translateY(0)';
+                }, 150 * index);
+            });
+
+            // Better hover feedback
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    link.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        link.style.transform = 'translateY(-2px)';
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
